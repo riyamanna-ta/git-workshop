@@ -3,18 +3,25 @@ name: CI-HelloWorld
 on:
   push:
     branches:
-      - doc/issue#2/writingDocstring
+      - enh/actionsimplementation
   workflow_dispatch:
 
 jobs:
-  hello-worls-job:
-    name: Hello World
+  with-checkout-job:
+    name: With Checkout
     runs-on: 'ubuntu-latest'
     steps:
-      - name: Run echo
-        run: |
-          echo "Hello world.!"
+      - name: Git Checkout
+        uses: actions/checkout@v4
 
-      - name: Run ls
+      - name: Install tree & run before build
         run: |
-          ls -la
+          sudo apt-get install -y tree
+          tree .
+
+      - name: Install python and Build
+        run: |
+          sudo apt-get install -y python3 python3-pip
+          sudo pip install --upgrade build
+
+        
