@@ -3,7 +3,7 @@ name: CI-Multi-Jobs
 on:
   push:
     branches:
-      - branch_name
+      - doc/issue#2/writingDocstring
   workflow_dispatch:
 
 jobs:
