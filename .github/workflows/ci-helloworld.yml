@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   hello-worls-job:
     name: Hello World
     runs-on: 'ubuntu-latest'

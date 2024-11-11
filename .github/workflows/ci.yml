@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - doc/issue#2/writingDocstring
+  workflow_dispatch:
+
+jobs:
+
+  with-checkout-job:
+    name: With Checkout
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Install tree & run before build
+        run: |
+          sudo apt-get install -y tree
+          tree .
+
+      - name: Install python and Build
+        run: |
+          sudo apt-get install python3 python-pip
+          sudo pip install --upgrade build
+
+      
+
